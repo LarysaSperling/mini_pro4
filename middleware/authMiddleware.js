@@ -5,7 +5,7 @@ const authMiddleware = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
-      return res.status(401).json({ message: "No token provided" });
+      return res.status(401).json({ message: "Unauthorized" });
     }
 
     const token = authHeader.split(" ")[1];
@@ -16,7 +16,7 @@ const authMiddleware = (req, res, next) => {
 
     next();
   } catch (error) {
-    res.status(401).json({ message: "Invalid token" });
+    res.status(401).json({ message: "Unauthorized" });
   }
 };
 
